@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php 
-    $dirCatalog = '/img/big';
-    $imagesCatalog = scandir($dirCatalog)
-?>
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style/style.css">
@@ -21,11 +16,7 @@
             </div>
         </div>
         <div id="catalog">
-            <?php foreach ($imagesCatalog as $imageName) :?>
-                <div class="productItem">
-                    <img class="smallImg" src="<?php $dirCatalog . '/' . $imageName; ?>" alt="<?php $imageName; ?>">
-                </div>
-            <?php endforeach; ?>
+            <?php require 'imageCatalog.php';?>
         </div>
     </main>
 </body>
