@@ -1,12 +1,21 @@
 
 <?php 
-    $dirCatalog = '.\\img\\big';
-    $imagesCatalog = scandir($dirCatalog);  // сканирование дирректории
-    unset($imagesCatalog[0], $imagesCatalog[1]); // удаление точек  после scandir
-?>
+    require 'connection.php';
+    $link = mysqli_connect($host, $user, $password, $database)
+    or die("Ошибка соединения с БД" . mysqli_error($link));
 
-<?php foreach ($imagesCatalog as $imageName) :?>
+    $query = "SELECT * FROM shop.images ORDER BY rating DESC";
+    $result = mysqli_query($link, $query);
+
+    $sqlImages = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        $sqlImages[] = $row;
+    }
+    mysqli_close($link);
+
+?>
+<?php foreach ($sqlImages as $imageData) :?>
     <div class="productItem">
-        <img class="smallImg" src="<?php echo("$dirCatalog\\$imageName");?>" alt="<?php echo($imageName);?>">
+        <img class="smallImg" src="<?php echo($imageData['dir_image'] . "\\" . $imageData['name_image']);?>">
     </div>
 <?php endforeach; ?>

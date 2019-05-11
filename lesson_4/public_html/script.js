@@ -7,6 +7,7 @@ function changeBigPicture(event) {
     else if (event.target.tagName === 'DIV') var $eventElement = event.target.querySelector('img')
     var $bigImg = document.createElement('img')
     $bigImg.src = $eventElement.src
+   /* $bigImg.dataset.rating = $eventElement.dataset.rating*/
     $previev.appendChild($bigImg)
 }
 
@@ -16,7 +17,10 @@ function openModalWindow(event) {
     var $previev = document.getElementById('previev')
     if ($previev.querySelector('img')) {
         var src = $previev.querySelector('img').src
+        var rating = $previev.querySelector('img').dataset.rating
+        console.log(rating)
         $modalWindow.src = src
+        /* $modalWindow.dataset.rating = Number(rating)+1 */
     } 
 }
 function init() {
