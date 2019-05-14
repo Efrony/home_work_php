@@ -4,27 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>lesson 5</title>
-    <script src="script.js"></script>
 </head>
 
 <body>
     <main>
-        <div class="flexy">
-            <a href="#ModalOpen" title="" id="previev"></a>
-            <div id="ModalOpen" class="Window">
-                <div>
-                    <a href="#close" title="Закрыть" class="close" type="submit" name="rating">X</a>
-                    <img src="" id='modalWindow' alt="Для подробного просмотра выберите товар" />
-                </div>
-            </div>
-        </div>
         <div id="catalog">
-            <?php require 'imageCatalog.php'; ?>
+            <?php 
+                $sqltable = 'images';
+                require 'imageCatalog.php'; 
+                
+            ?>
         </div>
-
     </main>
-
 </body>
 
 </html>

@@ -37,15 +37,14 @@ main {
   outline: none;
 }
 .rating {
-  display: none;
-  width: 0;
+  text-decoration: none;
 }
 .productItem {
+  display: block;
   border: 2px solid deepskyblue;
   width: 30%;
   border-radius: 20px;
   margin-top: 30px;
-  cursor: pointer;
 }
 .productItem:hover,
 .productItem:focus {

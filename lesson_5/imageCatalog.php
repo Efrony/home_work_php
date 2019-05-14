@@ -1,21 +1,22 @@
 
 <?php 
     require 'connection.php';
-    $link = mysqli_connect($host, $user, $password, $database)
-    or die("Ошибка соединения с БД" . mysqli_error($link));
 
-    $query = "SELECT * FROM shop.images ORDER BY rating DESC";
-    $result = mysqli_query($link, $query);
+    $sql = "SELECT * FROM images ORDER BY rating DESC";
+    $result = mysqli_query($sqlConnect, $sql);
 
-    $sqlImages = [];
-    while($row = mysqli_fetch_assoc($result)) {
-        $sqlImages[] = $row;
+    if (mysqli_num_rows($result) > 0) { // пока в таблице есть данные
+        while($row = mysqli_fetch_assoc($result)) {
+            $way = $row['dir_image'] . $row['name_image'];
+            $rating = $row['rating'];
+            echo('<a class="productItem" target="_blank" href="/imageShow.php?id=' . $row["id"] . '&db='. $sqltable . '">');
+            echo('<img class="smallImg" src=' . $way . '>');
+            echo('<span class="raring">'. $rating .'</span><i class="fa fa-eye" aria-hidden="true"></i></a>');   
+        }
     }
-    mysqli_close($link);
+    mysqli_close($sqlConnect);
 
 ?>
-<?php foreach ($sqlImages as $imageData) :?>
-    <div class="productItem">
-        <img class="smallImg" src="<?php echo($imageData['dir_image'] . "\\" . $imageData['name_image']);?>">
-    </div>
-<?php endforeach; ?>
+
+
+
